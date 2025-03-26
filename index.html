@@ -27,9 +27,23 @@
 		<option value="1">Strongly Disagree</option>
 	</select>
 		
-<br /><br /><br />
-	<button onclick="calculateCompatibility()">Calculate Compatibility</button>
-	<p id="compatibility"></p>
+<style>
+        body { display: flex; height: 100vh; align-items: center; justify-content: center; flex-direction: column; font-family: Arial, sans-serif; }
+        #randomNumber { font-size: 3rem; margin: 20px 0; }
+        button { padding: 10px 20px; font-size: 1.2rem; cursor: pointer; border: none; background-color: #4CAF50; color: #fff; border-radius: 8px; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div id="randomNumber">%</div>
+    <button onclick="generateRandomNumber()">Generate Random Percentage</button>
+
+    <script>
+        function generateRandomNumber() {
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('randomNumber').textContent = randomNumber + '%';
+        }
+    </script>
 		
 	<script>
 console.log("Starting Matchmaker Lite...");
