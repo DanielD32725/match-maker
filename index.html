@@ -5,14 +5,8 @@
       </head>
         <body>
 	<br /><br />
-			<h1><p style="text-align: center;">Pitter Patter Peter <3.</p> </h1>
-		<p style="text-align: center;"><ol type="1">
-			<li>Name: Pitter Patter Peter</li>
-			<li>Team members: Just me</li>
-			<li>Application overview: Peter compatibility calculator</li>
-			<li>Technology Overview: Web application using CSS, HTML, Javascript, and hosted using github pages</li>
-			<li>Last updated: 3/26/2025</li>
-		</ol> <3.</p>
+        <h1><p style="text-align: center;">Pitter Patter Peter <3.</p> </h1>
+      <p style="text-align: center;">Pitter Patter Peter <3.</p>
 
 	<!-- Reference for HTML “option” tabs/fields: https://www.w3schools.com/tags/tag_option.asp -->
 	<div style="text-align: center;">
@@ -33,36 +27,102 @@
 		<option value="2">Disagree</option>
 		<option value="1">Strongly Disagree</option>
 	</select>
+
+	<!-- Additional 10 Questions -->
+	<br /><br />
+	<label>Do you enjoy spontaneous dance-offs?</label><br />
+	<select id="q3">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Have you ever attempted to tame a squirrel?</label><br />
+	<select id="q4">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Is pineapple on pizza a crime?</label><br />
+	<select id="q5">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Would you survive a zombie apocalypse?</label><br />
+	<select id="q6">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Do you believe in aliens?</label><br />
+	<select id="q7">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Have you named your houseplants?</label><br />
+	<select id="q8">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Would you adopt a pet dragon if it were legal?</label><br />
+	<select id="q9">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
+	<br /><br />
+	<label>Can you make the perfect cup of tea?</label><br />
+	<select id="q10">
+		<option value="5">Strongly Agree</option>
+		<option value="4">Agree</option>
+		<option value="3">Neither agree nor disagree</option>
+		<option value="2">Disagree</option>
+		<option value="1">Strongly Disagree</option>
+	</select>
 	</div>
 
 <style>
         body { display: flex; height: 100vh; align-items: center; justify-content: center; flex-direction: column; font-family: Arial, sans-serif; }
         #randomNumber { font-size: 3rem; margin: 20px 0; }
         button { padding: 10px 20px; font-size: 1.2rem; cursor: pointer; border: none; background-color: #4CAF50; color: #fff; border-radius: 8px; }
-        button:hover { background-color: #45a049; }
+        button:hover { background-color: #f00000; }
     </style>
 </head>
 <body>
     <div id="randomNumber">%</div>
-    <button onclick="generateRandomNumber()">Generate Random Percentage</button>
+    <button onclick="calculateCompatibility()">Calculate Compatibility</button>
 
     <script>
-        function generateRandomNumber() {
-            const randomNumber = Math.floor(Math.random() * 100) + 1;
-            document.getElementById('randomNumber').textContent = randomNumber + '%';
+        function calculateCompatibility() {
+            let totalScore = 0;
+            for (let i = 1; i <= 10; i++) {
+                totalScore += parseInt(document.getElementById(`q${i}`).value);
+            }
+            const compatibility = (totalScore / 50) * 100;
+            document.getElementById('randomNumber').textContent = compatibility + '%';
         }
     </script>
-	
-	<script>
-console.log("Starting Matchmaker Lite...");
-
-function calculateCompatibility() {
-	console.log("calculateCompatibility()");
-
-	document.getElementById("compatibility").innerHTML = "Your compatibility is...";
-}
-
-</script>
     </body>
 </html>
-
