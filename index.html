@@ -9,7 +9,8 @@
       <p style="text-align: center;">Pitter Patter Peter <3.</p>
 
 	<!-- Reference for HTML “option” tabs/fields: https://www.w3schools.com/tags/tag_option.asp -->
-	<label style="align: center;">Are you of the female species?</label><br />
+	<div style="text-align: center;">
+	<label>Are you of the female species?</label><br />
 	<select id="q1">
 		<option value="5">Strongly Agree</option>
 		<option value="4">Agree</option>
@@ -17,8 +18,8 @@
 		<option value="2">Disagree</option>
 		<option value="1">Strongly Disagree</option>
 	</select>
-	
-	<label style="align: center;">Are you 3 raccoons in a trench coat trying to steal my kidneys again?</label><br />
+	<br /><br />
+	<label>Are you 3 raccoons in a trench coat trying to steal my kidneys again?</label><br />
 	<select id="q2">
 		<option value="5">Strongly Agree</option>
 		<option value="4">Agree</option>
@@ -26,7 +27,8 @@
 		<option value="2">Disagree</option>
 		<option value="1">Strongly Disagree</option>
 	</select>
-		
+	</div>
+
 <style>
         body { display: flex; height: 100vh; align-items: center; justify-content: center; flex-direction: column; font-family: Arial, sans-serif; }
         #randomNumber { font-size: 3rem; margin: 20px 0; }
@@ -44,7 +46,7 @@
             document.getElementById('randomNumber').textContent = randomNumber + '%';
         }
     </script>
-		
+	
 	<script>
 console.log("Starting Matchmaker Lite...");
 
@@ -57,3 +59,4 @@ function calculateCompatibility() {
 </script>
     </body>
 </html>
+
