@@ -21,11 +21,11 @@
 	<br /><br />
 	<label>Are you 3 raccoons in a trench coat trying to steal my kidneys again?</label><br />
 	<select id="q2">
-		<option value="5">Strongly Agree</option>
-		<option value="4">Agree</option>
+		<option value="1">Strongly Agree</option>
+		<option value="2">Agree</option>
 		<option value="3">Neither agree nor disagree</option>
-		<option value="2">Disagree</option>
-		<option value="1">Strongly Disagree</option>
+		<option value="4">Disagree</option>
+		<option value="5">Strongly Disagree</option>
 	</select>
 
 	<!-- Additional 10 Questions -->
@@ -93,7 +93,7 @@
 		<option value="1">Strongly Disagree</option>
 	</select>
 	<br /><br />
-	<label>Can you make the perfect cup of tea?</label><br />
+	<label>Can you make the perfect cup of coffee?</label><br />
 	<select id="q10">
 		<option value="5">Strongly Agree</option>
 		<option value="4">Agree</option>
@@ -107,7 +107,7 @@
         body { display: flex; height: 100vh; align-items: center; justify-content: center; flex-direction: column; font-family: Arial, sans-serif; }
         #randomNumber { font-size: 3rem; margin: 20px 0; }
         button { padding: 10px 20px; font-size: 1.2rem; cursor: pointer; border: none; background-color: #4CAF50; color: #fff; border-radius: 8px; }
-        button:hover { background-color: #f00000; }
+        button:hover { background-color: #45a049; }
     </style>
 </head>
 <body>
@@ -118,7 +118,9 @@
         function calculateCompatibility() {
             let totalScore = 0;
             for (let i = 1; i <= 10; i++) {
-                totalScore += parseInt(document.getElementById(`q${i}`).value);
+                let value = parseInt(document.getElementById(`q${i}`).value);
+                if (i === 2) value = 6 - value; // Reverse score for question 2
+                totalScore += value;
             }
             const compatibility = (totalScore / 50) * 100;
             document.getElementById('randomNumber').textContent = compatibility + '%';
