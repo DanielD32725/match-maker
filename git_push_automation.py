@@ -1,32 +1,35 @@
 import subprocess
-import sys
 
-def run_command(command):
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    if result.returncode != 0:
-        print(f"Error: {result.stderr}")
-        sys.exit(1)
-    print(result.stdout)
+print("Add Commit Push")
 
-def automate_git_push(commit_message, branch="main"):
-    try:
-        print("Adding files to staging area...")
-        run_command("git add -A")
+# Print the output
+print("Executing \"git status\":")
+print("")
 
-        print("Committing changes...")
-        run_command(f"git commit -m \"{commit_message}\"")
+# Run the git status command
+resultGitStatus = subprocess.run(["git", "status"], capture_output=True, text=True)
 
-    print("Adding files to staging area...")
-        run_command("git push")
+# Print the output
+print("Executing \"git status\":")
+print("")
 
-        print(f"Pushing to branch {branch}...")
-        run_command(f"git push origin {branch}")
+# Run the git add command
+resultGitAdd = subprocess.run(["git", "add", "-A"], capture_output=True, text=True)
 
-        print("✅ GitHub push completed successfully!")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+# Print the output
+print("Executing \"git add\":")
+print("")
 
-if __name__ == "__main__":
-    commit_message = input("Enter your commit message: ").strip()
-    branch = input("Enter branch name (default is 'main'): ").strip() or "main"
-    automate_git_push(commit_message, branch)
+# Run the git commit command
+resultGitCommit = subprocess.run(["git", "commit"], capture_output=True, text=True)
+
+# Print the output
+print("Executing \"git status\":")
+print("")
+
+# Run the git push command
+resultGitPush = subprocess.run(["git", "push"], capture_output=True, text=True)
+
+print(resultGitStatus.stdout)
+# print("STDERR:")
+# print(result.stderr)
