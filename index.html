@@ -98,19 +98,115 @@
 
     <!-- Compatibility Quiz -->
     <div class="question-container">
-      <!-- 10 questions looped manually -->
-      ${[...Array(10)].map((_, i) => `
-        <label>Question ${i + 1}</label><br />
-        <select id="q${i + 1}">
-          <option value="">Choose an answer</option>
-          <option value="5">Strongly Agree</option>
-          <option value="4">Agree</option>
-          <option value="3">Neither agree nor disagree</option>
-          <option value="2">Disagree</option>
-          <option value="1">Strongly Disagree</option>
-        </select>
-        <br /><br />
-      `).join('')}
+      <label>Are you of the female species?</label><br />
+      <select id="q1">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Are you willing to participate in my experiment?</label><br />
+      <select id="q2">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Do you enjoy cooking?</label><br />
+      <select id="q3">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Do you like cats?</label><br />
+      <select id="q4">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Are you an adventurous person?</label><br />
+      <select id="q5">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Do you enjoy hiking?</label><br />
+      <select id="q6">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Do you like to travel?</label><br />
+      <select id="q7">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Are you a fan of romance movies?</label><br />
+      <select id="q8">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Do you prefer staying at home?</label><br />
+      <select id="q9">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
+
+      <label>Are you a dog person?</label><br />
+      <select id="q10">
+        <option value="">Choose an answer</option>
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+      </select>
+      <br /><br />
     </div>
 
     <div id="randomNumber">%</div>
@@ -132,7 +228,7 @@
       function calculateCompatibility() {
         let totalScore = 0;
         let answeredQuestions = 0;
-        const negativeQuestions = [2];
+        const negativeQuestions = [2]; // Add more negative Qs here
 
         for (let i = 1; i <= 10; i++) {
           const val = document.getElementById('q' + i).value;
