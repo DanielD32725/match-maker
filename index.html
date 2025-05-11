@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Pitter Patter Peter <3</title>
-    <p>Product Name Pitter Patter Peter</p>
-    <p>Team Members: Daniel Dominguez</p>
-    <p>Application Overview: This is an application that calculates your compatibility with my friend peter</p>
-    <p>Technology Overview: Hosted on github using javascript, CSS, and HTML,</p>
-    <p>Proposal Last Updated: 4/6/2025</p>
-    <p>Feature List: Compatibility calculation, sound effects, and messages.</p>
-    <p>Future Feature List: Minigames</p>
-    <p>Basic Technical Features: Use of sequences and logic</p>
-    <p>Advanced Technical Features: Audio files are going to be used</p>
     <style>
       body {
         display: flex;
-        height: 100vh;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
+        align-items: center;
         font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
       }
       #randomNumber {
         font-size: 3rem;
@@ -29,7 +21,7 @@
         font-size: 1.2rem;
         cursor: pointer;
         border: none;
-        background-color: #4CAF50;
+        background-color: #4caf50;
         color: #fff;
         border-radius: 8px;
       }
@@ -48,7 +40,7 @@
         border: 2px solid #333;
         background: white;
         overflow: hidden;
-        margin-top: 20px;
+        margin-top: 40px;
       }
       #circle {
         width: 50px;
@@ -59,6 +51,7 @@
         align-items: center;
         justify-content: center;
         transition: left 0.1s, top 0.1s;
+        background-color: rgba(255, 0, 0, 0.2); /* for visibility */
       }
       #circle::before {
         content: "\2764";
@@ -77,7 +70,7 @@
         height: 100vh;
         background-size: cover;
         background-position: center;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         color: white;
@@ -85,134 +78,50 @@
         font-weight: bold;
         text-shadow: 2px 2px 8px #000;
         z-index: 10;
-        display: none;
+        background: rgba(0, 0, 0, 0.8);
       }
     </style>
   </head>
   <body>
     <h1 style="text-align: center;">Pitter Patter Peter <3</h1>
 
+    <!-- App Info -->
+    <p><strong>Product Name:</strong> Pitter Patter Peter</p>
+    <p><strong>Team Members:</strong> Daniel Dominguez</p>
+    <p><strong>Application Overview:</strong> This is an application that calculates your compatibility with my friend Peter.</p>
+    <p><strong>Technology Overview:</strong> Hosted on GitHub using JavaScript, CSS, and HTML.</p>
+    <p><strong>Proposal Last Updated:</strong> 4/6/2025</p>
+    <p><strong>Feature List:</strong> Compatibility calculation, sound effects, and messages.</p>
+    <p><strong>Future Feature List:</strong> Minigames</p>
+    <p><strong>Basic Technical Features:</strong> Use of sequences and logic</p>
+    <p><strong>Advanced Technical Features:</strong> Audio files are going to be used</p>
+
+    <!-- Compatibility Quiz -->
     <div class="question-container">
-      <label>Are you of the female species?</label><br />
-      <select id="q1">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Are you willing to participate in my experiment?</label><br />
-      <select id="q2">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Do you enjoy cooking?</label><br />
-      <select id="q3">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Do you like cats?</label><br />
-      <select id="q4">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Are you an adventurous person?</label><br />
-      <select id="q5">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Do you enjoy hiking?</label><br />
-      <select id="q6">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Do you like to travel?</label><br />
-      <select id="q7">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Are you a fan of romance movies?</label><br />
-      <select id="q8">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Do you prefer staying at home?</label><br />
-      <select id="q9">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
-
-      <label>Are you a dog person?</label><br />
-      <select id="q10">
-        <option value="">Choose an answer</option>
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Neither agree nor disagree</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-      </select>
-      <br /><br />
+      <!-- 10 questions looped manually -->
+      ${[...Array(10)].map((_, i) => `
+        <label>Question ${i + 1}</label><br />
+        <select id="q${i + 1}">
+          <option value="">Choose an answer</option>
+          <option value="5">Strongly Agree</option>
+          <option value="4">Agree</option>
+          <option value="3">Neither agree nor disagree</option>
+          <option value="2">Disagree</option>
+          <option value="1">Strongly Disagree</option>
+        </select>
+        <br /><br />
+      `).join('')}
     </div>
 
     <div id="randomNumber">%</div>
     <button onclick="calculateCompatibility()">Calculate Compatibility</button>
 
-    <!-- Sound effect audio elements -->
+    <!-- Audio -->
     <audio id="highScoreSound" src="" preload="auto"></audio>
     <audio id="midScoreSound" src="" preload="auto"></audio>
     <audio id="lowScoreSound" src="https://www.fesliyanstudios.com/play-mp3/6688" preload="auto"></audio>
 
-    <!-- The heart game -->
+    <!-- Minigame -->
     <div id="game">
       <div id="circle"></div>
     </div>
@@ -223,11 +132,11 @@
       function calculateCompatibility() {
         let totalScore = 0;
         let answeredQuestions = 0;
-        const negativeQuestions = [2]; // Add more negative Qs here
-  
+        const negativeQuestions = [2];
+
         for (let i = 1; i <= 10; i++) {
-          const val = document.getElementById(`q${i}`).value;
-          if (val === "") continue;
+          const val = document.getElementById('q' + i).value;
+          if (val === '') continue;
           let value = parseInt(val);
           if (negativeQuestions.includes(i)) {
             value = 6 - value;
@@ -235,17 +144,16 @@
           totalScore += value;
           answeredQuestions++;
         }
-  
+
         if (answeredQuestions === 0) {
           document.getElementById('randomNumber').textContent = "Answer at least one!";
           return;
         }
-  
+
         const compatibility = ((totalScore - answeredQuestions) / (4 * answeredQuestions)) * 100;
         const rounded = Math.round(compatibility);
         document.getElementById('randomNumber').textContent = rounded + "%";
-  
-        // Play sound based on compatibility
+
         if (rounded >= 80) {
           document.getElementById('highScoreSound').play();
         } else if (rounded >= 40) {
@@ -255,55 +163,57 @@
         }
       }
 
-      const circle = document.getElementById('circle');
-      const game = document.getElementById('game');
-      const scoreDisplay = document.getElementById('score');
-      const winScreen = document.getElementById('win-screen');
-      let score = 0;
-      let gameEnded = false;
+      window.onload = () => {
+        const circle = document.getElementById('circle');
+        const game = document.getElementById('game');
+        const scoreDisplay = document.getElementById('score');
+        const winScreen = document.getElementById('win-screen');
+        let score = 0;
+        let gameEnded = false;
 
-      function moveCircleRandom() {
-        const maxX = game.clientWidth - circle.clientWidth;
-        const maxY = game.clientHeight - circle.clientHeight;
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-        circle.style.left = `${x}px`;
-        circle.style.top = `${y}px`;
-      }
-
-      function avoidMouse(e) {
-        if (gameEnded) return;
-        const rect = game.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const circleX = circle.offsetLeft + circle.offsetWidth / 2;
-        const circleY = circle.offsetTop + circle.offsetHeight / 2;
-        const dx = circleX - mouseX;
-        const dy = circleY - mouseY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 80) {
-          const angle = Math.atan2(dy, dx);
-          const newX = circle.offsetLeft + Math.cos(angle) * 50;
-          const newY = circle.offsetTop + Math.sin(angle) * 50;
-
+        function moveCircleRandom() {
           const maxX = game.clientWidth - circle.clientWidth;
           const maxY = game.clientHeight - circle.clientHeight;
-          circle.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
-          circle.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
+          const x = Math.random() * maxX;
+          const y = Math.random() * maxY;
+          circle.style.left = `${x}px`;
+          circle.style.top = `${y}px`;
         }
-      }
 
-      circle.addEventListener('click', () => {
-        gameEnded = true;
-        winScreen.style.display = 'flex';
-        circle.style.display = 'none';
-        scoreDisplay.style.display = 'none';
-      });
+        function avoidMouse(e) {
+          if (gameEnded) return;
+          const rect = game.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+          const circleX = circle.offsetLeft + circle.offsetWidth / 2;
+          const circleY = circle.offsetTop + circle.offsetHeight / 2;
+          const dx = circleX - mouseX;
+          const dy = circleY - mouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-      game.addEventListener('mousemove', avoidMouse);
+          if (distance < 80) {
+            const angle = Math.atan2(dy, dx);
+            const newX = circle.offsetLeft + Math.cos(angle) * 50;
+            const newY = circle.offsetTop + Math.sin(angle) * 50;
 
-      moveCircleRandom();
+            const maxX = game.clientWidth - circle.clientWidth;
+            const maxY = game.clientHeight - circle.clientHeight;
+            circle.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
+            circle.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
+          }
+        }
+
+        circle.addEventListener('click', () => {
+          gameEnded = true;
+          winScreen.style.display = 'flex';
+          circle.style.display = 'none';
+          scoreDisplay.style.display = 'none';
+        });
+
+        game.addEventListener('mousemove', avoidMouse);
+
+        moveCircleRandom();
+      };
     </script>
   </body>
 </html>
