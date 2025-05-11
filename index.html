@@ -67,17 +67,6 @@
   <body>
     <h1 style="text-align: center;">Pitter Patter Peter <3</h1>
 
-    <!-- App Info -->
-    <p><strong>Product Name:</strong> Pitter Patter Peter</p>
-    <p><strong>Team Members:</strong> Daniel Dominguez</p>
-    <p><strong>Application Overview:</strong> This is an application that calculates your compatibility with my friend Peter.</p>
-    <p><strong>Technology Overview:</strong> Hosted on GitHub using JavaScript, CSS, and HTML.</p>
-    <p><strong>Proposal Last Updated:</strong> 4/6/2025</p>
-    <p><strong>Feature List:</strong> Compatibility calculation, sound effects, and messages.</p>
-    <p><strong>Future Feature List:</strong> Minigames</p>
-    <p><strong>Basic Technical Features:</strong> Use of sequences and logic</p>
-    <p><strong>Advanced Technical Features:</strong> Audio files are going to be used</p>
-
     <!-- Compatibility Quiz -->
     <div class="question-container">
       <label>Are you of the female species?</label><br />
@@ -258,21 +247,21 @@
           const rect = game.getBoundingClientRect();
           const mouseX = e.clientX - rect.left;
           const mouseY = e.clientY - rect.top;
-          const circleX = circle.offsetLeft + circle.offsetWidth / 2;
-          const circleY = circle.offsetTop + circle.offsetHeight / 2;
+          const circleX = e.target.offsetLeft + e.target.offsetWidth / 2;
+          const circleY = e.target.offsetTop + e.target.offsetHeight / 2;
           const dx = circleX - mouseX;
           const dy = circleY - mouseY;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 80) {
             const angle = Math.atan2(dy, dx);
-            const newX = circle.offsetLeft + Math.cos(angle) * 50;
-            const newY = circle.offsetTop + Math.sin(angle) * 50;
+            const newX = e.target.offsetLeft + Math.cos(angle) * 50;
+            const newY = e.target.offsetTop + Math.sin(angle) * 50;
 
-            const maxX = game.clientWidth - circle.clientWidth;
-            const maxY = game.clientHeight - circle.clientHeight;
-            circle.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
-            circle.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
+            const maxX = game.clientWidth - e.target.clientWidth;
+            const maxY = game.clientHeight - e.target.clientHeight;
+            e.target.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
+            e.target.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
           }
         }
 
