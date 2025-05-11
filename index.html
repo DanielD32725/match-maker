@@ -12,7 +12,7 @@
         margin: 0;
         padding: 20px;
 
-       background-image: url('https://example.com/your-image.jpg'); 
+       background-image: url('https://imgur.com/a/HJw0u78'); 
        background-size: cover; 
        background-position: center; 
        background-repeat: no-repeat;
@@ -75,7 +75,7 @@
     </style>
   </head>
   <body>
-    <h1 style="text-align: center;">Pitter Patter Peter <3</h1>
+    <h1 style="text-align: center;">Pitter Patter Peter </h1>
 
     <!-- Compatibility Quiz -->
     <div class="question-container">
@@ -208,7 +208,7 @@
   function calculateCompatibility() {
     let totalScore = 0;
     let answeredQuestions = 0;
-    const negativeQuestions = [2]; // Add more negative Qs here
+    const negativeQuestions = [2];
 
     for (let i = 1; i <= 10; i++) {
       const val = document.getElementById('q' + i).value;
@@ -239,11 +239,9 @@
     }
   }
 
-  // This function will close the window if value "5" is selected for question 4
   function checkQuestion4() {
     const q4Value = document.getElementById('q4').value;
     if (q4Value === "5") {
-      // Close the window
       window.close();
     }
   }
@@ -285,18 +283,16 @@
     }
 
     function onCircleClick(e) {
-      // Increase the score after each click
       score += 1;
       scoreDisplay.textContent = 'Score: ' + score;
 
-      // 50% chance to multiply the heart
       if (Math.random() < 0.5) {
         const newHeart = document.createElement('div');
         newHeart.classList.add('heart');
         game.appendChild(newHeart);
         moveCircleRandom(newHeart);
 
-        newHeart.addEventListener('click', onCircleClick); // Add click event to new heart
+        newHeart.addEventListener('click', onCircleClick);
       }
 
       moveCircleRandom(e.target);
@@ -308,7 +304,6 @@
 
     moveCircleRandom(circle);
 
-    // Add the event listener for question 4 to check for the value "5"
     document.getElementById('q4').addEventListener('change', checkQuestion4);
   };
     </script>
