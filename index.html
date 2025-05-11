@@ -195,100 +195,112 @@
     <div id="score">Score: 0</div>
 
     <script>
-      function calculateCompatibility() {
-        let totalScore = 0;
-        let answeredQuestions = 0;
-        const negativeQuestions = [2]; // Add more negative Qs here
+  function calculateCompatibility() {
+    let totalScore = 0;
+    let answeredQuestions = 0;
+    const negativeQuestions = [2]; // Add more negative Qs here
 
-        for (let i = 1; i <= 10; i++) {
-          const val = document.getElementById('q' + i).value;
-          if (val === '') continue;
-          let value = parseInt(val);
-          if (negativeQuestions.includes(i)) {
-            value = 6 - value;
-          }
-          totalScore += value;
-          answeredQuestions++;
-        }
+    for (let i = 1; i <= 10; i++) {
+      const val = document.getElementById('q' + i).value;
+      if (val === '') continue;
+      let value = parseInt(val);
+      if (negativeQuestions.includes(i)) {
+        value = 6 - value;
+      }
+      totalScore += value;
+      answeredQuestions++;
+    }
 
-        if (answeredQuestions === 0) {
-          document.getElementById('randomNumber').textContent = "Answer at least one!";
-          return;
-        }
+    if (answeredQuestions === 0) {
+      document.getElementById('randomNumber').textContent = "Answer at least one!";
+      return;
+    }
 
-        const compatibility = ((totalScore - answeredQuestions) / (4 * answeredQuestions)) * 100;
-        const rounded = Math.round(compatibility);
-        document.getElementById('randomNumber').textContent = rounded + "%";
+    const compatibility = ((totalScore - answeredQuestions) / (4 * answeredQuestions)) * 100;
+    const rounded = Math.round(compatibility);
+    document.getElementById('randomNumber').textContent = rounded + "%";
 
-        if (rounded >= 80) {
-          document.getElementById('highScoreSound').play();
-        } else if (rounded >= 40) {
-          document.getElementById('midScoreSound').play();
-        } else {
-          document.getElementById('lowScoreSound').play();
-        }
+    if (rounded >= 80) {
+      document.getElementById('highScoreSound').play();
+    } else if (rounded >= 40) {
+      document.getElementById('midScoreSound').play();
+    } else {
+      document.getElementById('lowScoreSound').play();
+    }
+  }
+
+  // This function will close the window if value "5" is selected for question 4
+  function checkQuestion4() {
+    const q4Value = document.getElementById('q4').value;
+    if (q4Value === "5") {
+      // Close the window
+      window.close();
+    }
+  }
+
+  window.onload = () => {
+    const game = document.getElementById('game');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+
+    function moveCircleRandom(circle) {
+      const maxX = game.clientWidth - circle.clientWidth;
+      const maxY = game.clientHeight - circle.clientHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+    }
+
+    function avoidMouse(e) {
+      const rect = game.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      const circleX = e.target.offsetLeft + e.target.offsetWidth / 2;
+      const circleY = e.target.offsetTop + e.target.offsetHeight / 2;
+      const dx = circleX - mouseX;
+      const dy = circleY - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 80) {
+        const angle = Math.atan2(dy, dx);
+        const newX = e.target.offsetLeft + Math.cos(angle) * 50;
+        const newY = e.target.offsetTop + Math.sin(angle) * 50;
+
+        const maxX = game.clientWidth - e.target.clientWidth;
+        const maxY = game.clientHeight - e.target.clientHeight;
+        e.target.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
+        e.target.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
+      }
+    }
+
+    function onCircleClick(e) {
+      // Increase the score after each click
+      score += 1;
+      scoreDisplay.textContent = 'Score: ' + score;
+
+      // 50% chance to multiply the heart
+      if (Math.random() < 0.5) {
+        const newHeart = document.createElement('div');
+        newHeart.classList.add('heart');
+        game.appendChild(newHeart);
+        moveCircleRandom(newHeart);
+
+        newHeart.addEventListener('click', onCircleClick); // Add click event to new heart
       }
 
-      window.onload = () => {
-        const game = document.getElementById('game');
-        const scoreDisplay = document.getElementById('score');
-        let score = 0;
+      moveCircleRandom(e.target);
+    }
 
-        function moveCircleRandom(circle) {
-          const maxX = game.clientWidth - circle.clientWidth;
-          const maxY = game.clientHeight - circle.clientHeight;
-          const x = Math.random() * maxX;
-          const y = Math.random() * maxY;
-          circle.style.left = `${x}px`;
-          circle.style.top = `${y}px`;
-        }
+    const circle = document.getElementById('circle');
+    circle.addEventListener('click', onCircleClick);
+    game.addEventListener('mousemove', avoidMouse);
 
-        function avoidMouse(e) {
-          const rect = game.getBoundingClientRect();
-          const mouseX = e.clientX - rect.left;
-          const mouseY = e.clientY - rect.top;
-          const circleX = e.target.offsetLeft + e.target.offsetWidth / 2;
-          const circleY = e.target.offsetTop + e.target.offsetHeight / 2;
-          const dx = circleX - mouseX;
-          const dy = circleY - mouseY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+    moveCircleRandom(circle);
 
-          if (distance < 80) {
-            const angle = Math.atan2(dy, dx);
-            const newX = e.target.offsetLeft + Math.cos(angle) * 50;
-            const newY = e.target.offsetTop + Math.sin(angle) * 50;
-
-            const maxX = game.clientWidth - e.target.clientWidth;
-            const maxY = game.clientHeight - e.target.clientHeight;
-            e.target.style.left = `${Math.max(0, Math.min(maxX, newX))}px`;
-            e.target.style.top = `${Math.max(0, Math.min(maxY, newY))}px`;
-          }
-        }
-
-        function onCircleClick(e) {
-          // Increase the score after each click
-          score += 1;
-          scoreDisplay.textContent = 'Score: ' + score;
-
-          // 50% chance to multiply the heart
-          if (Math.random() < 0.5) {
-            const newHeart = document.createElement('div');
-            newHeart.classList.add('heart');
-            game.appendChild(newHeart);
-            moveCircleRandom(newHeart);
-
-            newHeart.addEventListener('click', onCircleClick); // Add click event to new heart
-          }
-
-          moveCircleRandom(e.target);
-        }
-
-        const circle = document.getElementById('circle');
-        circle.addEventListener('click', onCircleClick);
-        game.addEventListener('mousemove', avoidMouse);
-
-        moveCircleRandom(circle);
-      };
+    // Add the event listener for question 4 to check for the value "5"
+    document.getElementById('q4').addEventListener('change', checkQuestion4);
+  };
     </script>
   </body>
 </html>
