@@ -296,6 +296,24 @@
         newHeart.addEventListener('click', onCircleClick);
       }
 
+      if (Math.random() < 0.25) {
+  // 25% chance to spawn 10 hearts
+  for (let i = 0; i < 10; i++) {
+    const newHeart = document.createElement('div');
+    newHeart.classList.add('heart');
+    game.appendChild(newHeart);
+    moveCircleRandom(newHeart);
+    newHeart.addEventListener('click', onCircleClick);
+  }
+} else {
+  // Otherwise, just spawn one heart
+  const newHeart = document.createElement('div');
+  newHeart.classList.add('heart');
+  game.appendChild(newHeart);
+  moveCircleRandom(newHeart);
+  newHeart.addEventListener('click', onCircleClick);
+}
+
       moveCircleRandom(e.target);
     }
 
